@@ -367,15 +367,19 @@ namespace PptToPdf
 
         private void Watcher_PptDetected(object sender, FileSystemEventArgs e)
         {
-            FileAttributes attr = File.GetAttributes(e.FullPath);
-
-            if (!attr.HasFlag(FileAttributes.Temporary) && !Path.GetFileName(e.FullPath).StartsWith("~$"))
+            try
             {
-                if (PowerpointExtensions.Contains(Path.GetExtension(e.FullPath).ToLower()))
+                FileAttributes attr = File.GetAttributes(e.FullPath);
+
+                if (!attr.HasFlag(FileAttributes.Temporary) && !Path.GetFileName(e.FullPath).StartsWith("~$"))
                 {
-                    Invoke((Action<string>)CreateAlert, e.FullPath);
+                    if (PowerpointExtensions.Contains(Path.GetExtension(e.FullPath).ToLower()))
+                    {
+                        Invoke((Action<string>)CreateAlert, e.FullPath);
+                    }
                 }
             }
+            catch (UnauthorizedAccessException) { }
         }
 
         private void Alert_LeftButtonClick(object sender, MouseEventArgs e)
