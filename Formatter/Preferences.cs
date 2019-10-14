@@ -86,5 +86,21 @@ namespace PptToPdf
 
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1499523268;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(fontName);
+            hashCode = hashCode * -1521134295 + fontStyle.GetHashCode();
+            hashCode = hashCode * -1521134295 + ptSize.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<Font>.Default.GetHashCode(Font);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(EnabledDriveLabels);
+            hashCode = hashCode * -1521134295 + Language.GetHashCode();
+            hashCode = hashCode * -1521134295 + AlertPosition.GetHashCode();
+            hashCode = hashCode * -1521134295 + AlertOpacity.GetHashCode();
+            hashCode = hashCode * -1521134295 + ToastPosition.GetHashCode();
+            hashCode = hashCode * -1521134295 + ToastOpacity.GetHashCode();
+            return hashCode;
+        }
     }
 }
