@@ -15,6 +15,8 @@ namespace PptToPdf
     [Serializable]
     internal class Preferences
     {
+        public bool ShowTips { get; set; } = true;
+
         private string fontName = "맑은 고딕";
         private FontStyle fontStyle = FontStyle.Regular;
         private float ptSize = 10;
@@ -28,14 +30,14 @@ namespace PptToPdf
                 ptSize = value.SizeInPoints;
             }
         }
-        public string EnabledDriveLabels { get; set; } = "C";
+        public string EnabledDriveLabels { get; set; } = "CD";
         public ELanguages Language { get; set; } = ELanguages.English_US;
 
         public StartupPositionFlag AlertPosition { get; set; } = StartupPositionFlag.DEFAULT;
         public double AlertOpacity { get; set; } = 1;
 
         public StartupPositionFlag ToastPosition { get; set; } = StartupPositionFlag.BOTTOM;
-        public double ToastOpacity { get; set; } = 1;
+        public double ToastOpacity { get; set; } = 0.7;
 
         public Preferences()
         {

@@ -1,6 +1,4 @@
-﻿// TEST COMMENT
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -73,6 +71,8 @@ namespace PptToPdf
             Share.PreferencesChanged += Share_PreferencesChanged;
 
             Share_PreferencesChanged(this, Share.Preferences);
+
+            ShowToast(Share.LanguagePack.Activated);
         }
 
         private void Share_PreferencesChanged(object sender, Preferences e)
@@ -122,7 +122,7 @@ namespace PptToPdf
                 e.Graphics.FillRectangle(backgroundBrush, diameter / 2, 0, Width - diameter, Height);
                 e.Graphics.FillRectangle(backgroundBrush, 0, diameter / 2, Width, Height - diameter);
 
-                float offsetY = diameter / 4;
+                float offsetY = diameter / (popupLines.Length == 1 ? 2 : 4);
                 foreach (var msgLine in popupLines)
                 {
                     var area = new RectangleF();
@@ -379,6 +379,8 @@ namespace PptToPdf
                     }
                 }
             }
+            catch (FileNotFoundException) { }
+            catch (DirectoryNotFoundException) { }
             catch (UnauthorizedAccessException) { }
         }
 
@@ -440,6 +442,7 @@ namespace PptToPdf
 
                         if (drives.Count() == 1)
                         {
+                            ShowToast($"{drives.First().Name[0]}: {Share.LanguagePack.DriveDetected}");
                             AddDrive(drives.First());
                         }
                         else
@@ -451,6 +454,7 @@ namespace PptToPdf
                                 if (!currentLabels.Contains(label))
                                 {
                                     watchers[label].Dispose();
+                                    ShowToast($"{label}: {Share.LanguagePack.DriveRemoved}");
                                     watchers.Remove(label);
                                 }
                             }
@@ -466,24 +470,5 @@ namespace PptToPdf
                     break;
             }
         }
-
-        #region ALERT/TOAST TEST
-
-#if DEBUG
-
-        private void TESTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateAlert(@"C:\Users\nda11\Desktop\DB00.pptx");
-        }
-
-        private int testToastCnt = 0;
-        private void tESTToastToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowToast(Font.ToString());
-        }
-
-#endif
-
-        #endregion
     }
 }

@@ -41,6 +41,8 @@ namespace PptToPdf
             alertPanel.Visible = toastPanel.Visible = false;
             genericPanel.Dock = alertPanel.Dock = toastPanel.Dock = DockStyle.Fill;
 
+            showTipsCheckBox.Top = panel4.Height - showTipsCheckBox.Height - panel4.Padding.Bottom - showTipsCheckBox.Margin.Bottom;
+
             LoadPreferences(Share.Preferences);
         }
 
@@ -210,6 +212,8 @@ namespace PptToPdf
         {
             return new Preferences()
             {
+                ShowTips = showTipsCheckBox.Checked,
+
                 Font = fontDialog.Font,
                 EnabledDriveLabels = driveTextBox.Text,
                 Language = (ELanguages)langComboBox.SelectedIndex,
@@ -224,6 +228,8 @@ namespace PptToPdf
 
         private void LoadPreferences(Preferences preferences)
         {
+            showTipsCheckBox.Checked = preferences.ShowTips;
+
             fontDialog.Font = preferences.Font;
             fontLinkedLabel.Text = $"{fontDialog.Font.FontFamily.Name}, {GetFontStyleString(fontDialog.Font.Style)}, {fontDialog.Font.Size}pt";
             langComboBox.SelectedIndex = (int)preferences.Language;
@@ -286,6 +292,7 @@ namespace PptToPdf
             fontLabel.Text = Share.LanguagePack.Font;
             languageLabel.Text = Share.LanguagePack.Language;
             drivesLabel.Text = Share.LanguagePack.Drives;
+            showTipsCheckBox.Text = Share.LanguagePack.ShowTipsOnStartup;
             alertLabel.Text = Share.LanguagePack.Alert;
             alertOpacityLabel.Text = $"{Share.LanguagePack.Opacity}: {alertOpacityTrackBar.Value}%";
             toastLabel.Text = Share.LanguagePack.Toast;

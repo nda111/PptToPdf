@@ -80,6 +80,7 @@
             this.alertMenuButton = new System.Windows.Forms.Extensions.ImageRadioButton();
             this.genericMenuButton = new System.Windows.Forms.Extensions.ImageRadioButton();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.showTipsCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPanel.SuspendLayout();
             this.alertPanel.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -516,6 +517,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.showTipsCheckBox);
             this.panel4.Controls.Add(this.driveTextBox);
             this.panel4.Controls.Add(this.fontLinkedLabel);
             this.panel4.Controls.Add(this.drivesLabel);
@@ -736,6 +738,16 @@
             this.genericMenuButton.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.genericMenuButton.CheckedChanged += new System.EventHandler(this.TapMenu_CheckedChanged);
             // 
+            // showTipsCheckBox
+            // 
+            this.showTipsCheckBox.AutoSize = true;
+            this.showTipsCheckBox.Location = new System.Drawing.Point(13, 284);
+            this.showTipsCheckBox.Name = "showTipsCheckBox";
+            this.showTipsCheckBox.Size = new System.Drawing.Size(159, 23);
+            this.showTipsCheckBox.TabIndex = 4;
+            this.showTipsCheckBox.Text = "Show tips on startup";
+            this.showTipsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -832,5 +844,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Extensions.ImageRadioButton defaultBtn;
         private System.Windows.Forms.Extensions.ImageRadioButton saveBtn;
+        private System.Windows.Forms.CheckBox showTipsCheckBox;
     }
 }
