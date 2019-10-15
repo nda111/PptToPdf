@@ -14,10 +14,6 @@ namespace System.Languages
         public string LanguageName { get; private set; } = null;
 
         // Toast
-        public string Activated { get; private set; } = null;
-        public string DriveDetected { get; private set; } = null;
-        public string DriveRemoved { get; private set; } = null;
-
         public string Preferences { get; private set; } = null;
         public string Restart { get; private set; } = null;
         public string RestartMessage { get; private set; } = null;
@@ -32,7 +28,6 @@ namespace System.Languages
         public string Font { get; private set; } = null;
         public string Language { get; private set; } = null;
         public string Drives { get; private set; } = null;
-        public string ShowTipsOnStartup { get; private set; } = null;
         public string Alert { get; private set; } = null;
         public string Toast { get; private set; } = null;
         public string Opacity { get; private set; } = null;
@@ -59,9 +54,6 @@ namespace System.Languages
             {
                 ELanguages.English_US, new LanguagePack()
                 {
-                    Activated = "PPT to PDF Activated",
-                    DriveDetected = "drive Detected",
-                    DriveRemoved = "drive Demoved",
                     LanguageName = "English (US)",
                     Preferences = "Preferences",
                     Restart  = "Restart",
@@ -74,7 +66,6 @@ namespace System.Languages
                     Font  = "Font",
                     Language = "Language",
                     Drives  = "Drives",
-                    ShowTipsOnStartup = "Show tips on startup",
                     Alert = "Alert",
                     Toast = "Toast",
                     Opacity  = "Opacity",
@@ -87,9 +78,6 @@ namespace System.Languages
             {
                 ELanguages.Korean, new LanguagePack()
                 {
-                    Activated = "PPT to PDF 프로그램을 시작합니다",
-                    DriveDetected = "드라이브가 인식되었습니다",
-                    DriveRemoved = "드라이브가 제거되었습니다",
                     LanguageName = "한국어",
                     Preferences = "환경 설정",
                     Restart  = "다시 시작",
@@ -102,7 +90,6 @@ namespace System.Languages
                     Font  = "글꼴",
                     Language = "언어",
                     Drives  = "저장장치",
-                    ShowTipsOnStartup = "시작할 때 도움말 보기",
                     Alert = "알림",
                     Toast = "팝업 메시지",
                     Opacity  = "불투명도",
@@ -115,9 +102,6 @@ namespace System.Languages
             {
                 ELanguages.Japanese, new LanguagePack()
                 {
-                    Activated = "PPT To PDF プログラムの起動",
-                    DriveDetected = "ドライブが認識されてい",
-                    DriveRemoved = "ドライブが取り外されました",
                     LanguageName = "日本語",
                     Preferences = "環境設定",
                     Restart  = "再起動",
@@ -130,7 +114,6 @@ namespace System.Languages
                     Font  = "フォント",
                     Language = "言語",
                     Drives  = "ストレージ",
-                    ShowTipsOnStartup = "スタートアップに関するヒントを表示する",
                     Alert = "通知",
                     Toast = "ポップアップメッセージ",
                     Opacity  = "不透明度",
@@ -143,9 +126,6 @@ namespace System.Languages
             {
                 ELanguages.Chinese, new LanguagePack()
                 {
-                    Activated = "PPT To PDF 程序开始",
-                    DriveDetected = "驾驶检测",
-                    DriveRemoved = "卸下驱动器",
                     LanguageName = "简体中文",
                     Preferences = "偏好设定",
                     Restart  = "重新启动",
@@ -158,7 +138,6 @@ namespace System.Languages
                     Font  = "字体",
                     Language = "语言能力",
                     Drives  = "贮藏",
-                    ShowTipsOnStartup = "显示启动提示",
                     Alert = "通知事项",
                     Toast = "弹出消息",
                     Opacity  = "不透明度",
