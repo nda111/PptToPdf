@@ -28,6 +28,9 @@ namespace System.Languages
         public string Font { get; private set; } = null;
         public string Language { get; private set; } = null;
         public string Drives { get; private set; } = null;
+        public string Startup { get; private set; } = null;
+        public string DriveDetected { get; private set; } = null;
+        public string DriveRemoved { get; private set; } = null;
         public string Alert { get; private set; } = null;
         public string Toast { get; private set; } = null;
         public string Opacity { get; private set; } = null;
@@ -66,6 +69,9 @@ namespace System.Languages
                     Font  = "Font",
                     Language = "Language",
                     Drives  = "Drives",
+                    Startup = "PPT To PDF Is running",
+                    DriveDetected = "drive detected",
+                    DriveRemoved = "drive removed",
                     Alert = "Alert",
                     Toast = "Toast",
                     Opacity  = "Opacity",
@@ -90,6 +96,9 @@ namespace System.Languages
                     Font  = "글꼴",
                     Language = "언어",
                     Drives  = "저장장치",
+                    Startup = "PPT To PDF 프로그램을 시작합니다",
+                    DriveDetected = "드라이브가 인식되었습니다",
+                    DriveRemoved = "드라이브가 제거되었습니다",
                     Alert = "알림",
                     Toast = "팝업 메시지",
                     Opacity  = "불투명도",
@@ -114,6 +123,9 @@ namespace System.Languages
                     Font  = "フォント",
                     Language = "言語",
                     Drives  = "ストレージ",
+                    Startup = "PPT To PDF プログラムが実行されています",
+                    DriveDetected = "ドライブが検出されました",
+                    DriveRemoved = "ドライブを取り外しました",
                     Alert = "通知",
                     Toast = "ポップアップメッセージ",
                     Opacity  = "不透明度",
@@ -138,6 +150,9 @@ namespace System.Languages
                     Font  = "字体",
                     Language = "语言能力",
                     Drives  = "贮藏",
+                    Startup = "PPT To PDF 程序正在运行",
+                    DriveDetected = "检测到驱动器",
+                    DriveRemoved = "驱动器已卸下",
                     Alert = "通知事项",
                     Toast = "弹出消息",
                     Opacity  = "不透明度",

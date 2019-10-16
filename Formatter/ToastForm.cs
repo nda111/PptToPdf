@@ -1,6 +1,4 @@
-﻿// TEST COMMENT
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -73,6 +71,8 @@ namespace PptToPdf
             Share.PreferencesChanged += Share_PreferencesChanged;
 
             Share_PreferencesChanged(this, Share.Preferences);
+
+            ShowToast(Share.LanguagePack.Startup);
         }
 
         private void Share_PreferencesChanged(object sender, Preferences e)
@@ -122,7 +122,7 @@ namespace PptToPdf
                 e.Graphics.FillRectangle(backgroundBrush, diameter / 2, 0, Width - diameter, Height);
                 e.Graphics.FillRectangle(backgroundBrush, 0, diameter / 2, Width, Height - diameter);
 
-                float offsetY = diameter / 4;
+                float offsetY = diameter / (popupLines.Length == 1 ? 2 : 4);
                 foreach (var msgLine in popupLines)
                 {
                     var area = new RectangleF();
@@ -273,7 +273,9 @@ namespace PptToPdf
 
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
+#pragma warning disable CS4014 // 이 호출을 대기하지 않으므로 호출이 완료되기 전에 현재 메서드가 계속 실행됩니다.
                     PowerpointToPdf.ConvertRange(openDialog.FileNames);
+#pragma warning restore CS4014 // 이 호출을 대기하지 않으므로 호출이 완료되기 전에 현재 메서드가 계속 실행됩니다.
                 }
             }
         }
@@ -317,17 +319,20 @@ namespace PptToPdf
             step[0] = 0;
             steps.CopyTo(step, 1);
             for (int i = 1; i < step.Length; i++)
+            {
                 step[i] += step[i - 1];
+            }
 
             for (int i = 1; i < step.Length; i++)
+            {
                 if (time <= step[i])
                 {
                     idx = i - 1;
                     break;
                 }
+            }
 
             double result;
-
             switch (idx)
             {
                 case 0:
@@ -379,6 +384,8 @@ namespace PptToPdf
                     }
                 }
             }
+            catch (FileNotFoundException) { }
+            catch (DirectoryNotFoundException) { }
             catch (UnauthorizedAccessException) { }
         }
 
@@ -388,7 +395,9 @@ namespace PptToPdf
 
             if (File.Exists(form.FileFullName))
             {
+#pragma warning disable CS4014 // 이 호출을 대기하지 않으므로 호출이 완료되기 전에 현재 메서드가 계속 실행됩니다.
                 PowerpointToPdf.ConvertRange(form.FileFullName);
+#pragma warning restore CS4014 // 이 호출을 대기하지 않으므로 호출이 완료되기 전에 현재 메서드가 계속 실행됩니다.
             }
 
             form.Close();
@@ -440,7 +449,10 @@ namespace PptToPdf
 
                         if (drives.Count() == 1)
                         {
-                            AddDrive(drives.First());
+                            DriveInfo drive = drives.First();
+
+                            AddDrive(drive);
+                            ShowToast($"{drive.Name[0]}: {Share.LanguagePack.DriveDetected}");
                         }
                         else
                         {
@@ -452,6 +464,7 @@ namespace PptToPdf
                                 {
                                     watchers[label].Dispose();
                                     watchers.Remove(label);
+                                    ShowToast($"{label}: {Share.LanguagePack.DriveRemoved}");
                                 }
                             }
                         }
